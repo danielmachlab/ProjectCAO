@@ -49,15 +49,6 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
   /* TODO: Generate outputs based on the FSM states and inputs. For Parts 2, 3 and 4 you will
        add the new control signals here. */
 
-
-// I am not sure which on the above this is but I am just adding it 
-// This is from class but I don't know where 'update' is coming from
-  always @ (present_state,update,mm)
-  begin
-  	if_we <= 1b0;
-	alu_up <= 2b10;
-	wb_sel <= 1b0;
-  end
 // Halt on HLT instruction
   
   always @ (opcode)
