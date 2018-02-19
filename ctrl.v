@@ -26,7 +26,20 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
   /* TODO: Write a sequential procedure that progresses the fsm to the next state on the
        positive edge of the clock, OR resets the state to 'start1' on the negative edge
        of rst_f. Notice that the computer is reset when rst_f is low, not high. */
-
+  always @(present_state, RST_F)
+  begin 
+    if (RST_F == 0)
+      present_state <= start1;
+    else
+      case (present_state)
+        start0: next_state <= start1;
+        start1: next_state <= fetch;
+        fetch: next_state <= decode;
+        decode: next_state <= execute;
+        execute: next_state <= mem;
+        mem: next_state <= writeback;
+        writeback: next_state <= fetch;
+  end
 
   
   /* TODO: Write a combination procedure that determines the next state of the fsm. */
