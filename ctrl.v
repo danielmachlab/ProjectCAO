@@ -55,8 +55,8 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 // This is from class but I don't know where 'update' is coming from
   always @ (present_state,update,mm)
   begin
-  	if_we <= 1b0;
-	alu_up <= 2b10;
+  	rf_we <= 1b0;
+	alu_op <= 2b10;
 	wb_sel <= 1b0;
   end
 // Halt on HLT instruction
