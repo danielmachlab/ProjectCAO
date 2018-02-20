@@ -5,8 +5,9 @@
 
 module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 
-  /* TODO: Declare the ports listed above as inputs or outputs */
-  
+  // Declare the ports listed above as inputs or outputs
+  input clk, rst_f, opcode, mm, stat;
+  output rf_we, alu_op, wb_sel;
   
   // states
   parameter start0 = 0, start1 = 1, fetch = 2, decode = 3, execute = 4, mem = 5, writeback = 6;
