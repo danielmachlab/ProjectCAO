@@ -32,7 +32,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 
   always @(present_state, rst_f)
   begin 
-    if (RST_F == 0)
+    if (rst_f == 0)
       present_state <= start1;
     else
       case (present_state)
