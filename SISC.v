@@ -9,17 +9,17 @@ module sisc (clk, rst_f, ir);
   input [31:0] ir;
 
 // declare all internal wires here
-  wire [31:0] rsa, rsb, alu_result, rf_write_data
-  wire [15:0] imm
-  wire [3:0]  stat_out, sr_in, sr_enable //correct
-  wire [1:0]  alu_op
-  wire        wb_sel, rf_we, 
+  wire [31:0] rsa, rsb, alu_result, rf_write_data;
+  wire [15:0] imm;
+  wire [3:0]  sr_out, sr_in;//correct
+  wire [1:0]  alu_op;
+  wire        wb_sel, rf_we, sr_enable ;
   
 
 
 
 // component instantiation goes here
-  alu u1(clk, rsa, rsb, imm, alu_op, alu_result, /*stat-double check*/ sr_in, stat_en); //taking alu def and naming it u1
+  alu u1(clk, rsa, rsb, imm, alu_op, alu_result, /*stat-double check*/ sr_in, sr_enable); //taking alu def and naming it u1
   ctrl u2(clk, rst_f, /*opcode*/ir[31:28], /*mm*/ir[27:24], /*stat*/ sr_out, rf_we, alu_op, wb_sel);
   mux4 u3(in_a, in_b, sel, out);
   mux32 u4(in_a, in_b, sel, out);

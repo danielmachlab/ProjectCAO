@@ -26,39 +26,73 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 
   /* TODO: Write a sequential procedure that progresses the fsm to the next state on the
        positive edge of the clock, OR resets the state to 'start1' on the negative edge
-       of rst_f. Notice that the computer is reset when rst_f is low, not high. */
-  always @(present_state, RST_F)
+       of rst_f. Notice that the computer is reset when rst_f is low, not high. 
+	TODO: Write a combination procedure that determines the next state of the fsm. */
+
+
+  always @(present_state, rst_f)
   begin 
     if (RST_F == 0)
       present_state <= start1;
     else
       case (present_state)
-        start0: next_state <= start1;
-        start1: next_state <= fetch;
-        fetch: next_state <= decode;
-        decode: next_state <= execute;
-        execute: next_state <= mem;
-        mem: next_state <= writeback;
-        writeback: next_state <= fetch;
+        start0: 
+	   next_state <= start1;
+        start1: 
+	   next_state <= fetch;
+        fetch: 
+	   next_state <= decode;
+        decode: 
+	   next_state <= execute;
+        execute: 
+	   next_state <= mem;
+        mem: 
+	   next_state <= writeback;
+        writeback: 
+	   next_state <= fetch;
   end
 
-  
-  /* TODO: Write a combination procedure that determines the next state of the fsm. */
-
-
-
+ 
   /* TODO: Generate outputs based on the FSM states and inputs. For Parts 2, 3 and 4 you will
        add the new control signals here. */
 
 
-// I am not sure which on the above this is but I am just adding it 
-// This is from class but I don't know where 'update' is coming from
-  always @ (present_state,update,mm)
+  always @ (present_state,opcode,mm)
   begin
-  	rf_we <= 1b0;
-	alu_op <= 2b10;
-	wb_sel <= 1b0;
+  	rf_we <= 1'b0;
+	alu_op <= 2'b10;
+	wb_sel <= 1'b0;
+
+	case(present_state)
+	   execute:
+		//if opcode is 8 and mm is 8 alu_op bit zero is 1
+		if(opcode == 8 && mm == 8)
+			alu_op[0] = 1'b1;
+
+		//if oppcode is 8 then alu_op bit 1 is zero
+		if(opcode == 8)
+			alu_op[1] = 1'b0;
+			
+		
+	   memory://make sure output of alu immedeate or not so at the beginning of writeback
+
+		//if opcode is 8 and mm is 8 alu_op bit zero is 1
+		if(opcode == 8 && mm == 8)
+			alu_op[0] = 1'b1;
+
+   	   writeback:
+		//write back to the register file
+		//wher rfwe is set to 1 if opcode is 8
+		if(opcode == 8)
+			rf_we = 1;
+
+
+	endcase;
   end
+
+
+
+
 // Halt on HLT instruction
   
   always @ (opcode)
