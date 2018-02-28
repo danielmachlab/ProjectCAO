@@ -24,15 +24,20 @@ module sisc (clk, rst_f, ir);
   mux4 u3(in_a, in_b, sel, out);
   mux32 u4(in_a, in_b, sel, out);
   rf u5(clk, /*read_rega*/ir[19:16], /*read_regb*/ ir[15:12], /*write_reg*/ir[23:20], rf_write_data, rf_we, rsa, rsb);
-  statreg u5(clk, sr_in, sr_enable, sr_out);
+  statreg u6(clk, sr_in, sr_enable, sr_out);
 
 
-  initial
+ 
   
 // put a $monitor statement here.  
-
-
-
+  initial
+  begin
+     $monitor("IR=%h", ir.ram_array[1]);
+     $monitor("ALU_OP=%h",alu_op.ram_array[1]);
+     $monitor("WB_SEL=%h",wb_sel.ram_array[1]);
+     $monitor("RF_WE=%h",rf_we.ram_array[1]);
+  end
+ 
 endmodule
 
 
