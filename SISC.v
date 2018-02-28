@@ -32,10 +32,10 @@ module sisc (clk, rst_f, ir);
 // put a $monitor statement here.  
   initial
   begin
-     $monitor("IR=%h", ir.ram_array[1]);
-     $monitor("ALU_OP=%h",alu_op.ram_array[1]);
-     $monitor("WB_SEL=%h",wb_sel.ram_array[1]);
-     $monitor("RF_WE=%h",rf_we.ram_array[1]);
+     $monitor("IR=%h", ir);
+     $monitor("ALU_OP=%h",alu_op);
+     $monitor("WB_SEL=%h",wb_sel);
+     $monitor("RF_WE=%h",rf_we);
   end
  
 endmodule

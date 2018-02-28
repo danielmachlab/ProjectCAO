@@ -27,12 +27,17 @@ module sisc (clk, rst_f, ir);
   statreg u6(clk, sr_in, sr_enable, sr_out);
 
 
-  initial
+ 
   
 // put a $monitor statement here.  
-
-
-
+  initial
+  begin
+     $monitor("IR=%h", ir.ram_array[1]);
+     $monitor("ALU_OP=%h",alu_op.ram_array[1]);
+     $monitor("WB_SEL=%h",wb_sel.ram_array[1]);
+     $monitor("RF_WE=%h",rf_we);
+  end
+ 
 endmodule
 
 
