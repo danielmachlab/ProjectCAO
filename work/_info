@@ -9,149 +9,170 @@ z2
 cModel Technology
 dc:/program files/Modeltech_pe_edu_10.4a/examples
 valu
-Z0 !s110 1519780273
+!s110 1519837941
 !i10b 1
 !s100 W0L>RIQWAR4jllG6FV6gf1
-IkhcIZ3DK5@Bci0>FdL6DP0
-Z1 VDg1SIo80bB@j0V0VzS_@n1
-Z2 dC:/Git/School/CompArch/ProjectCAO
-w1516391779
-8C:/Git/School/CompArch/ProjectCAO/alu.v
-FC:/Git/School/CompArch/ProjectCAO/alu.v
+IQdf10aEL0c`SecmNNIOC;2
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/ted/ProjectCAO
+Z2 w1519780625
+8C:/Users/ted/ProjectCAO/alu.v
+FC:/Users/ted/ProjectCAO/alu.v
 L0 6
 Z3 OP;L;10.4a;61
 r1
 !s85 0
 31
-Z4 !s108 1519780272.000000
-!s107 C:/Git/School/CompArch/ProjectCAO/alu.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Git/School/CompArch/ProjectCAO/alu.v|
+!s108 1519837941.000000
+!s107 C:/Users/ted/ProjectCAO/alu.v|
+!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/alu.v|
 !s101 -O0
 !i113 1
-Z5 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
-vmux32
+Z4 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+vctrl
+!s110 1519837942
+!i10b 1
+!s100 c9Fe@99DF^R1C4zflbnU20
+IV^NfHOSXWGXZ=ezL6Jn]T3
 R0
+R1
+w1519837359
+8C:/Users/ted/ProjectCAO/ctrl.v
+FC:/Users/ted/ProjectCAO/ctrl.v
+L0 6
+R3
+r1
+!s85 0
+31
+!s108 1519837942.000000
+!s107 C:/Users/ted/ProjectCAO/ctrl.v|
+!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/ctrl.v|
+!s101 -O0
+!i113 1
+R4
+vmux32
+!s110 1519837945
 !i10b 1
 !s100 Acz_fIGhQd8CLP=K1MHX>1
-IZcIiAeMH`9_n=QhzP_U_83
+Ik=ZZQiW:TbYjFB`=ga:>53
+R0
 R1
 R2
-w1455296371
-8C:/Git/School/CompArch/ProjectCAO/mux32.v
-FC:/Git/School/CompArch/ProjectCAO/mux32.v
+8C:/Users/ted/ProjectCAO/mux32.v
+FC:/Users/ted/ProjectCAO/mux32.v
 L0 6
 R3
 r1
 !s85 0
 31
-Z6 !s108 1519780273.000000
-!s107 C:/Git/School/CompArch/ProjectCAO/mux32.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Git/School/CompArch/ProjectCAO/mux32.v|
+!s108 1519837945.000000
+!s107 C:/Users/ted/ProjectCAO/mux32.v|
+!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/mux32.v|
 !s101 -O0
 !i113 1
-R5
+R4
 vmux4
-R0
+!s110 1519837944
 !i10b 1
 !s100 HRz]=:ikHCjI1m7o^]0YV0
-IKO_VL<01bSNh<[1cR1AWZ2
+I4AiZQ4LFnB5NX>3Ul2d_U3
+R0
 R1
 R2
-w1517233904
-8C:/Git/School/CompArch/ProjectCAO/mux4.v
-FC:/Git/School/CompArch/ProjectCAO/mux4.v
+8C:/Users/ted/ProjectCAO/mux4.v
+FC:/Users/ted/ProjectCAO/mux4.v
 L0 6
 R3
 r1
 !s85 0
 31
-R6
-!s107 C:/Git/School/CompArch/ProjectCAO/mux4.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Git/School/CompArch/ProjectCAO/mux4.v|
+!s108 1519837944.000000
+!s107 C:/Users/ted/ProjectCAO/mux4.v|
+!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/mux4.v|
 !s101 -O0
 !i113 1
-R5
+R4
 vrf
-R0
+!s110 1519837946
 !i10b 1
 !s100 Y]X9S761=bZX00UjaD]Ro3
-IeC>h:En?=b;bHcn1nCm5K2
+I8z`E]`0JZi;E720;eW@j40
+R0
 R1
 R2
-w1487769668
-8C:/Git/School/CompArch/ProjectCAO/rf.v
-FC:/Git/School/CompArch/ProjectCAO/rf.v
+8C:/Users/ted/ProjectCAO/rf.v
+FC:/Users/ted/ProjectCAO/rf.v
 L0 6
 R3
 r1
 !s85 0
 31
-R6
-!s107 C:/Git/School/CompArch/ProjectCAO/rf.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Git/School/CompArch/ProjectCAO/rf.v|
+!s108 1519837946.000000
+!s107 C:/Users/ted/ProjectCAO/rf.v|
+!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/rf.v|
 !s101 -O0
 !i113 1
-R5
+R4
 vsisc
-!s110 1519782227
+!s110 1519837948
 !i10b 1
-!s100 2KZcV<FdON5JkCFCQ_BVS3
-I_iaclR>IU3@CAzR2CPO:C1
+!s100 iIP_ALd5Mzedoc[N<nWG92
+IO_8@Z^Bk]6k9>UNzZe@l61
+R0
 R1
-dC:/Users/danie/Dev/ProjectCAO
-w1519782217
-8C:/Users/danie/Dev/ProjectCAO/SISC.v
-FC:/Users/danie/Dev/ProjectCAO/SISC.v
+w1519837876
+8C:/Users/ted/ProjectCAO/SISC.v
+FC:/Users/ted/ProjectCAO/SISC.v
 L0 6
 R3
 r1
 !s85 0
 31
-!s108 1519782227.000000
-!s107 C:/Users/danie/Dev/ProjectCAO/SISC.v|
-!s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/SISC.v|
+!s108 1519837948.000000
+!s107 C:/Users/ted/ProjectCAO/SISC.v|
+!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/SISC.v|
 !s101 -O0
 !i113 1
-R5
+R4
 vsisc_tb
-!s110 1519780274
+!s110 1519837949
 !i10b 1
 !s100 X_Z<8j<8m4G8`Ro]DPh@`2
-IF_e8GodUh<VTU8l<9B=YJ2
+INPb=NM;ZJlZ>N4o=C`9nO0
+R0
 R1
 R2
-w1517586326
-8C:/Git/School/CompArch/ProjectCAO/sisc_tb_p1.v
-FC:/Git/School/CompArch/ProjectCAO/sisc_tb_p1.v
+8C:/Users/ted/ProjectCAO/sisc_tb_p1.v
+FC:/Users/ted/ProjectCAO/sisc_tb_p1.v
 L0 6
 R3
 r1
 !s85 0
 31
-!s108 1519780274.000000
-!s107 C:/Git/School/CompArch/ProjectCAO/sisc_tb_p1.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Git/School/CompArch/ProjectCAO/sisc_tb_p1.v|
+!s108 1519837949.000000
+!s107 C:/Users/ted/ProjectCAO/sisc_tb_p1.v|
+!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/sisc_tb_p1.v|
 !s101 -O0
 !i113 1
-R5
+R4
 vstatreg
-!s110 1519780272
+!s110 1519837950
 !i10b 1
 !s100 N8RNk@:0mCn87Q8FG?AQL3
-IaGIFBLhj@]Z;B:5jD2lD73
+IKFcOYTmiVQT[Md`ZP?hH^0
+R0
 R1
 R2
-w1456433853
-8C:/Git/School/CompArch/ProjectCAO/statreg.v
-FC:/Git/School/CompArch/ProjectCAO/statreg.v
+8C:/Users/ted/ProjectCAO/statreg.v
+FC:/Users/ted/ProjectCAO/statreg.v
 L0 6
 R3
 r1
 !s85 0
 31
-R4
-!s107 C:/Git/School/CompArch/ProjectCAO/statreg.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Git/School/CompArch/ProjectCAO/statreg.v|
+!s108 1519837950.000000
+!s107 C:/Users/ted/ProjectCAO/statreg.v|
+!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/statreg.v|
 !s101 -O0
 !i113 1
-R5
+R4

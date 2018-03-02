@@ -6,8 +6,13 @@
 module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 
   // Declare the ports listed above as inputs or outputs
-  input clk, rst_f, opcode, mm, stat;
-  output rf_we, alu_op, wb_sel;
+  input clk, rst_f;
+  input [3:0] opcode, mm, stat;
+
+  output rf_we, wb_sel, alu_op;
+
+  reg rf_we, wb_sel;
+  reg [1:0] alu_op;
   
   // states
   parameter start0 = 0, start1 = 1, fetch = 2, decode = 3, execute = 4, mem = 5, writeback = 6;
@@ -35,6 +40,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
     if (rst_f == 0)
       present_state <= start1;
     else
+    begin
       case (present_state)
         start0: 
 	   next_state <= start1;
@@ -50,6 +56,8 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 	   next_state <= writeback;
         writeback: 
 	   next_state <= fetch;
+      endcase
+    end
   end
 
  
@@ -65,6 +73,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 
 	case(present_state)
 	   execute:
+           begin
 		//if opcode is 8 and mm is 8 alu_op bit zero is 1
 		if(opcode == 8 && mm == 8)
 			alu_op[0] = 1'b1;
@@ -72,22 +81,27 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 		//if oppcode is 8 then alu_op bit 1 is zero
 		if(opcode == 8)
 			alu_op[1] = 1'b0;
+           end
 			
 		
-	   memory://make sure output of alu immedeate or not so at the beginning of writeback
+	   mem://make sure output of alu immedeate or not so at the beginning of writeback
+           begin
 
 		//if opcode is 8 and mm is 8 alu_op bit zero is 1
 		if(opcode == 8 && mm == 8)
 			alu_op[0] = 1'b1;
+           end
 
    	   writeback:
+           begin
 		//write back to the register file
 		//wher rfwe is set to 1 if opcode is 8
 		if(opcode == 8)
 			rf_we = 1;
+           end
 
 
-	endcase;
+	endcase
   end
 
 
