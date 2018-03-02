@@ -9,8 +9,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
   input clk, rst_f;
   input [3:0] opcode, mm, stat;
 
-  output rf_we, wb_sel;
-  output [1:0 alu_op;
+  output rf_we, wb_sel, alu_op;
 
   reg rf_we, wb_sel;
   reg [1:0] alu_op;
@@ -61,6 +60,12 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
     end
   end
 
+  always @(posedge clk, negedge rst_f)
+  begin
+    if (rst_f == 0)
+      present_state <= start1;
+    else 
+      present_state <= next_state
  
   /* TODO: Generate outputs based on the FSM states and inputs. For Parts 2, 3 and 4 you will
        add the new control signals here. */
