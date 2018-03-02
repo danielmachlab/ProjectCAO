@@ -74,9 +74,9 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 
   always @ (present_state,opcode,mm)
   begin
-  	rf_we <= 1'b0;
-	alu_op <= 2'b10;
-	wb_sel <= 1'b0;
+  	rf_we = 1'b0;
+	alu_op = 2'b10;
+	wb_sel = 1'b0;
 
 	case(present_state)
 	   execute:
@@ -110,8 +110,6 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 
 	endcase
   end
-
-
 
 
 // Halt on HLT instruction
