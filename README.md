@@ -5,6 +5,5 @@ This is a project for Computer Archecture and Organization @ University of Iowa 
 
 #### Who
 * [Joshua Wootonn](https://github.com/jose56wonton)
-
 * [Ted Paulsen](https://github.com/tedpaulsen)
 * [Daniel Machlab](https://github.com/danielmachlab)
