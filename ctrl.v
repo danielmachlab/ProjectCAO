@@ -3,7 +3,7 @@
 
 `timescale 1ns/100ps
 
-module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
+module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load);
 
   // Declare the ports listed above as inputs or outputs
   input clk, rst_f;
@@ -79,6 +79,15 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel);
 	wb_sel = 1'b0;
 
 	case(present_state)
+
+	   /*fetch:
+		ir_load = 1;
+		pc_write = 1
+		if pc_sel = 1, branch
+		if pc_sel = 0, increment
+		instart1, pc_rst = 1*/
+
+		
 	   execute:
            begin
 		//if opcode is 8 and mm is 8 alu_op bit zero is 1
