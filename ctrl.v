@@ -76,13 +76,23 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
     wb_sel = 1'b0;
 
     case(present_state)
-      /*fetch:
+      fetch:
+      begin
         ir_load = 1;
-        pc_write = 1
-        if pc_sel = 1, branch
-        if pc_sel = 0, increment
-        instart1, pc_rst = 1*/
-		
+	pc_write = 1;
+
+        //branch - do we check the status bits?
+        pc_sel = 1
+	
+	//increment PC
+        pc_sel = 0
+	   
+      end
+	
+
+      start1:
+	pc_rst = 1;
+
       execute:
       begin
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
