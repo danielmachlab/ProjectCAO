@@ -24,17 +24,19 @@ module sisc (clk, rst_f);
 
   // part 2 instantiation
   pc u7(clk, br_addr, pc_sel, pc_write, pc_rst, pc_out);
-  ir u8(clk, ir_load, read_data, instr/*instr*/);
+  ir u8(clk, ir_load, read_data, instr);
   im u9(/*read_addr*/pc_out, read_data);
   br u10(pc_out, instr[15:0]/*imm*/, br_sel, br_addr);
 
   // put a $monitor statement here.  
   initial
   begin
-     $monitor("IR=%h", ir);
-     $monitor("ALU_OP=%h",alu_op);
-     $monitor("WB_SEL=%h",wb_sel);
-     $monitor("RF_WE=%h",rf_we);
+
+     $monitor("instr=%h  alu_op=%h   wb_sel=%h   rf_we=%h   ", instr, alu_op, wb_sel, rf_we); 
+     //$monitor("IR=%h", ir);
+     //$monitor("ALU_OP=%h",alu_op);
+     //$monitor("WB_SEL=%h",wb_sel);
+     //$monitor("RF_WE=%h",rf_we);
   end
  
 endmodule

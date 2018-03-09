@@ -10,7 +10,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
   input [3:0] opcode, mm, stat;
   output rf_we, wb_sel, alu_op, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load;
 
-  reg rf_we, wb_sel;
+  reg rf_we, wb_sel, pc_write, pc_sel, pc_rst, ir_load, br_sel;
   reg [1:0] alu_op;
   
   // states
@@ -74,21 +74,33 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
     rf_we = 1'b0;
     alu_op = 2'b10;
     wb_sel = 1'b0;
-
+    pc_write = 1'b0;
+    pc_sel = 1'b0; //arbitrary
+    pc_rst = 1'b0; //arbitrary
+    ir_load = 1'b0; ///
     case(present_state)
-      fetch:
+      fetch: //done
       begin
         ir_load = 1;
 	pc_write = 1;
-
-        //branch - do we check the status bits?
-        pc_sel = 1
-	
-	//increment PC
-        pc_sel = 0
-	   
+	//increment PC in fetch
+        pc_sel = 0;   
       end
-	
+
+      decode:
+      begin
+	pc_sel = 1'b1;
+	//could be in execute.  Here because nothing else happens here.
+	if(opcode == BRA || opcode == BNE)//absolute
+	   br_sel = 1;
+	if(opcode == BRR || opcode == BNR)
+	   br_sel = 0;
+	if((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
+	   pc_write = 1;
+	if((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
+	   pc_write = 1;
+        
+      end
 
       start1:
 	pc_rst = 1;
