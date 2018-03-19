@@ -32,7 +32,7 @@ module sisc (clk, rst_f);
   initial
   begin
 
-     $monitor("instr=%h  alu_op=%h   wb_sel=%h   rf_we=%h   ", instr, alu_op, wb_sel, rf_we); 
+     $monitor("instr=%h,   alu_op=%h,   wb_sel=%h,   rf_we=%h   ", instr, alu_op, wb_sel, rf_we); 
      //$monitor("IR=%h", ir);
      //$monitor("ALU_OP=%h",alu_op);
      //$monitor("WB_SEL=%h",wb_sel);
