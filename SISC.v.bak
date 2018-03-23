@@ -32,7 +32,8 @@ module sisc (clk, rst_f);
   initial
   begin
 
-     $monitor("instr=%h,   alu_op=%h,   wb_sel=%h,   rf_we=%h   ", instr, alu_op, wb_sel, rf_we); 
+
+     $monitor("ir=%h, pc=%h, r1=%h, r2=%h, r3=%h, r4=%h, r5=%h, alu_op=%h, wb_sel=%h, rf_we=%h, br_sel=%h, pc_write=%h, pc_sel=%h", instr, pc_out, im.ram_array[7:0], im.ram_array[15:8], im.ram_array[23:16], im.ram_array[31:24], im.ram_array[39:32], alu_op, wb_sel, rf_we, br_sel, pc_write, pc_sel); 
      //$monitor("IR=%h", ir);
      //$monitor("ALU_OP=%h",alu_op);
      //$monitor("WB_SEL=%h",wb_sel);

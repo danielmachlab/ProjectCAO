@@ -51,23 +51,23 @@ R4
 !i113 1
 R5
 vctrl
-R6
+Z7 !s110 1521685854
 !i10b 1
 !s100 kl<_:9BgACmXOIOl<bgoS0
-Ib>dXR2Ng^fURJ_7_kGJ8O3
+I7`BVQ0<a1h_Rbc@D8MSfB0
 R0
-R1
-w1520629319
-8C:/Users/danie/Dev/ProjectCAO/ctrl.v
-FC:/Users/danie/Dev/ProjectCAO/ctrl.v
+Z8 dC:/Git/School/CompArch/ProjectCAO
+w1521479192
+8C:/Git/School/CompArch/ProjectCAO/ctrl.v
+FC:/Git/School/CompArch/ProjectCAO/ctrl.v
 L0 6
 R3
 r1
 !s85 0
 31
-Z7 !s108 1520629332.000000
-!s107 C:/Users/danie/Dev/ProjectCAO/ctrl.v|
-!s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/ctrl.v|
+Z9 !s108 1521685854.000000
+Z10 !s107 C:/Git/School/CompArch/ProjectCAO/SISC.v|C:/Git/School/CompArch/ProjectCAO/ctrl.v|
+Z11 !s90 -reportprogress|300|-work|work|C:/Git/School/CompArch/ProjectCAO/ctrl.v|C:/Git/School/CompArch/ProjectCAO/SISC.v|
 !s101 -O0
 !i113 1
 R5
@@ -78,7 +78,7 @@ R6
 I41m^mgN=OcRg=YI<j5oQ60
 R0
 R1
-Z8 w1520265538
+Z12 w1520265538
 8C:/Users/danie/Dev/ProjectCAO/im.v
 FC:/Users/danie/Dev/ProjectCAO/im.v
 L0 6
@@ -86,7 +86,7 @@ R3
 r1
 !s85 0
 31
-R7
+Z13 !s108 1520629332.000000
 !s107 C:/Users/danie/Dev/ProjectCAO/im.v|
 !s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/im.v|
 !s101 -O0
@@ -99,7 +99,7 @@ R6
 IGU0OWz`@zBkf?lS6RNlG>3
 R0
 R1
-R8
+R12
 8C:/Users/danie/Dev/ProjectCAO/ir.v
 FC:/Users/danie/Dev/ProjectCAO/ir.v
 L0 6
@@ -107,14 +107,14 @@ R3
 r1
 !s85 0
 31
-R7
+R13
 !s107 C:/Users/danie/Dev/ProjectCAO/ir.v|
 !s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/ir.v|
 !s101 -O0
 !i113 1
 R5
 vmux32
-Z9 !s110 1520629333
+Z14 !s110 1520629333
 !i10b 1
 !s100 Acz_fIGhQd8CLP=K1MHX>1
 IVJD8CbB=EC7_fJ0D]N8kj2
@@ -135,7 +135,7 @@ r1
 !i113 1
 R5
 vmux4
-R9
+R14
 !i10b 1
 !s100 HRz]=:ikHCjI1m7o^]0YV0
 I<<8W[]OYe<<UAVT9^^gk_1
@@ -149,20 +149,20 @@ R3
 r1
 !s85 0
 31
-R7
+R13
 !s107 C:/Users/danie/Dev/ProjectCAO/mux4.v|
 !s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/mux4.v|
 !s101 -O0
 !i113 1
 R5
 vpc
-Z10 !s110 1520629334
+Z15 !s110 1520629334
 !i10b 1
 !s100 g^<1nG1lh^PTV0;zBeBzj0
 IJ0X[=Ce[2MNO>B[mc@ZUF2
 R0
 R1
-R8
+R12
 8C:/Users/danie/Dev/ProjectCAO/pc.v
 FC:/Users/danie/Dev/ProjectCAO/pc.v
 L0 6
@@ -170,14 +170,14 @@ R3
 r1
 !s85 0
 31
-Z11 !s108 1520629334.000000
+Z16 !s108 1520629334.000000
 !s107 C:/Users/danie/Dev/ProjectCAO/pc.v|
 !s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/pc.v|
 !s101 -O0
 !i113 1
 R5
 vrf
-R10
+R15
 !i10b 1
 !s100 Y]X9S761=bZX00UjaD]Ro3
 I72JF^LCnJNU9:7@F[@L0o1
@@ -191,35 +191,35 @@ R3
 r1
 !s85 0
 31
-R11
+R16
 !s107 C:/Users/danie/Dev/ProjectCAO/rf.v|
 !s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/rf.v|
 !s101 -O0
 !i113 1
 R5
 vsisc
-R10
+R7
 !i10b 1
-!s100 N:cB;5:EWIRmnAUm;2>Fl2
-IiYWC7je98MT;jz;_caR0V2
+!s100 _a5KB`Tok^6odJ5GCfHhZ0
+IB@Z3PiOE2L3;0omKQ9EUE2
 R0
-R1
-w1520629322
-8C:/Users/danie/Dev/ProjectCAO/SISC.v
-FC:/Users/danie/Dev/ProjectCAO/SISC.v
+R8
+w1521685739
+8C:/Git/School/CompArch/ProjectCAO/SISC.v
+FC:/Git/School/CompArch/ProjectCAO/SISC.v
 L0 6
 R3
 r1
 !s85 0
 31
+R9
+R10
 R11
-!s107 C:/Users/danie/Dev/ProjectCAO/SISC.v|
-!s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/SISC.v|
 !s101 -O0
 !i113 1
 R5
 vsisc_tb
-Z12 !s110 1520629335
+Z17 !s110 1520629335
 !i10b 1
 !s100 XJeQjmc9lBbBAOaQHdTH11
 Ij[^dH@hh?UV>a=h_<95jf0
@@ -233,14 +233,14 @@ R3
 r1
 !s85 0
 31
-Z13 !s108 1520629335.000000
+Z18 !s108 1520629335.000000
 !s107 C:/Users/danie/Dev/ProjectCAO/sisc_tb_p2.v|
 !s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/sisc_tb_p2.v|
 !s101 -O0
 !i113 1
 R5
 vstatreg
-R12
+R17
 !i10b 1
 !s100 N8RNk@:0mCn87Q8FG?AQL3
 IZ6HGX]z3abbfg^4ljYQ0a1
@@ -254,7 +254,7 @@ R3
 r1
 !s85 0
 31
-R13
+R18
 !s107 C:/Users/danie/Dev/ProjectCAO/statreg.v|
 !s90 -reportprogress|300|-work|work|C:/Users/danie/Dev/ProjectCAO/statreg.v|
 !s101 -O0
