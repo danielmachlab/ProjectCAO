@@ -77,7 +77,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
     pc_write = 1'b0;
     pc_sel = 1'b0; //arbitrary
     pc_rst = 1'b0; //arbitrary
-    ir_load = 1'b0; ///
+    ir_load = 1'b0; //
     case(present_state)
       fetch: //done
       begin

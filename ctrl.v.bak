@@ -89,7 +89,8 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 
       decode:
       begin
-	//could be in execute. Here because nothing else happens here.
+	pc_sel = 1'b1;
+	//could be in execute.  Here because nothing else happens here.
 	if(opcode == BRA || opcode == BNE)//absolute
 	   br_sel = 1;
 	if(opcode == BRR || opcode == BNR)
