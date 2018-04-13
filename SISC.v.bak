@@ -11,8 +11,8 @@ module sisc (clk, rst_f);
   wire [31:0] rsa, rsb, alu_result, out_32, read_data, instr;
   wire [3:0]  sr_out, sr_in, out_4; // now it's correct
   wire [1:0]  alu_op;
-  wire [15:0] pc_out, br_addr;
-  wire        wb_sel, rf_we, sr_enable, sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load;
+  wire [15:0] pc_out, br_addr,out_16;
+  wire        wb_sel, rf_we, sr_enable, sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load,dm_we;
   
   // component instantiation goes here
   alu u1(clk, rsa, rsb, instr[15:0]/*imm*/, alu_op, alu_result, /*stat-double check*/ sr_in, sr_enable); //taking alu def and naming it u1
@@ -28,10 +28,16 @@ module sisc (clk, rst_f);
   im u9(/*read_addr*/pc_out, read_data);
   br u10(pc_out, instr[15:0]/*imm*/, br_sel, br_addr);
 
+  // part 3 instantiation
+  mux16(/*in_a*/instr[15:0],/*in_b*/alu_result,sel,out_16);
+  dm( out_16,out_16,rsb,dm_we,read_data); 
+// don't think this line is going to work. It needs to take two inputs from mux16 but mux16 only has one output
+
+
   // put a $monitor statement here.  
   initial
   begin
-    $monitor("ir=%h, pc=%h, r1=%h, r2=%h, r3=%h, r4=%h, r5=%h, alu_op=%h, br_sel=%h, pc_write=%h, pc_sel=%h", instr, pc_out, u5.ram_array(1), u5.ram_array(2), u5.ram_array(3), u5.ram_array(4), u5.ram_array(5), alu_op, br_sel, pc_write, pc_sel); 
+    $monitor("ir=%h, pc=%h, r1=%h, r2=%h, r3=%h, r4=%h, r5=%h, alu_op=%h, br_sel=%h, pc_write=%h, pc_sel=%h", instr, pc_out, u5.ram_array[1], u5.ram_array[2], u5.ram_array[3], u5.ram_array[4], u5.ram_array[5], alu_op, br_sel, pc_write, pc_sel); 
   end
  
 endmodule

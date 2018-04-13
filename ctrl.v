@@ -3,14 +3,14 @@
 
 `timescale 1ns/100ps
 
-module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load);
+module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load,dm_we);
 
   // Declare the ports listed above as inputs or outputs
   input clk, rst_f;
   input [3:0] opcode, mm, stat;
-  output rf_we, wb_sel, alu_op, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load;
+  output rf_we, wb_sel, alu_op, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load, dm_we;
 
-  reg rf_we, wb_sel, pc_write, pc_sel, pc_rst, ir_load, br_sel;
+  reg rf_we, wb_sel, pc_write, pc_sel, pc_rst, ir_load, br_sel, dm_we;
   reg [1:0] alu_op;
   
   // states
@@ -77,7 +77,8 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
     pc_write = 1'b0;
     pc_sel = 1'b0; //arbitrary
     pc_rst = 1'b0; //arbitrary
-    ir_load = 1'b0; //
+    ir_load = 1'b0;
+    dm_we = 1'b0;
     case(present_state)
       fetch: //done
       begin
@@ -103,7 +104,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
       end
 
       start1:
-	pc_rst = 1;
+	      pc_rst = 1;
 
       execute:
       begin
