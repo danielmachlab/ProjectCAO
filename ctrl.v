@@ -111,6 +111,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
         if(opcode == 8 && mm == 8)
           alu_op[0] = 1'b1;
+        
         //if oppcode is 8 then alu_op bit 1 is zero
         if(opcode == 8)
           alu_op[1] = 1'b0;
@@ -118,6 +119,17 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 		
       mem://make sure output of alu immedeate or not so at the beginning of writeback
       begin
+        dm_we = 1;
+       
+        // 01 or 02 + 08  mmselect = 0
+        // 01 or 02 + 00 mmselect = 1
+        if((opcode == 1 || opcode == 2) && mm == 8)          
+          alu_op[0] = 1'b0;
+        else if (mm == 0)
+          alu_op[0] = 1'b1;
+          
+       
+          
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
         if(opcode == 8 && mm == 8)
           alu_op[0] = 1'b1;
@@ -125,10 +137,12 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 
       writeback:
       begin
+        dm_we = 0;
         //write back to the register file
         //wher rfwe is set to 1 if opcode is 8
         if(opcode == 8)
           rf_we = 1;
+	
       end
     endcase
   end

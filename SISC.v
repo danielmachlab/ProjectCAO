@@ -29,9 +29,8 @@ module sisc (clk, rst_f);
   br u10(pc_out, instr[15:0]/*imm*/, br_sel, br_addr);
 
   // part 3 instantiation
-  mux16 u11(/*in_a*/instr[15:0],/*in_b*/alu_result,sel,out_16);
+  mux16 u11(/*in_a*/instr[15:0],/*in_b*/alu_result[15:0],sel,out_16);
   dm u12( out_16,out_16,rsb,dm_we,read_data); 
-  // don't think this line is going to work. It needs to take two inputs from mux16 but mux16 only has one output
 
 
   // put a $monitor statement here.  
