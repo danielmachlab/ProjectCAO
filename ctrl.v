@@ -3,15 +3,16 @@
 
 `timescale 1ns/100ps
 
-module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load,dm_we);
+module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load, mm_sel, dm_we);
 
   // Declare the ports listed above as inputs or outputs
   input clk, rst_f;
   input [3:0] opcode, mm, stat;
-  output rf_we, wb_sel, alu_op, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load, dm_we;
+  output [1:0] alu_op, wb_sel;
+  output rf_we, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load, mm_sel, dm_we;
 
-  reg rf_we, wb_sel, pc_write, pc_sel, pc_rst, ir_load, br_sel, dm_we;
-  reg [1:0] alu_op;
+  reg rf_we, pc_write, pc_sel, pc_rst, ir_load, br_sel, mm_sel, dm_we, rb_sel;
+  reg [1:0] alu_op, wb_sel;
   
   // states
   parameter start0 = 0, start1 = 1, fetch = 2, decode = 3, execute = 4, mem = 5, writeback = 6;
@@ -71,21 +72,23 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
        add the new control signals here. */
   always @ (present_state,opcode,mm)
   begin
-    rf_we = 1'b0;
-    alu_op = 2'b10;
-    wb_sel = 1'b0;
-    pc_write = 1'b0;
-    pc_sel = 1'b0; //arbitrary
-    pc_rst = 1'b0; //arbitrary
-    ir_load = 1'b0;
-    dm_we = 1'b0;
+    rf_we <= 1'b0;
+    alu_op <= 2'b10;
+    wb_sel <= 2'b00;
+    pc_write <= 1'b0;
+    pc_sel <= 1'b0; //arbitrary
+    pc_rst <= 1'b0; //arbitrary
+    ir_load <= 1'b0;
+    mm_sel <= 1'b0;
+    dm_we <= 1'b0;
+
     case(present_state)
       fetch: //done
       begin
-        ir_load = 1;
-	pc_write = 1;
+        ir_load <= 1;
+	pc_write <= 1;
 	//increment PC in fetch
-        pc_sel = 0;   
+        pc_sel <= 0;   
       end
 
       decode:
@@ -93,18 +96,18 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 	pc_sel = 1'b1;
 	//could be in execute.  Here because nothing else happens here.
 	if(opcode == BRA || opcode == BNE)//absolute
-	   br_sel = 1;
+	   br_sel <= 1;
 	if(opcode == BRR || opcode == BNR)
-	   br_sel = 0;
+	   br_sel <= 0;
 	if((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
-	   pc_write = 1;
+	   pc_write <= 1;
 	if((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
-	   pc_write = 1;
+	   pc_write <= 1;
         
       end
 
       start1:
-	      pc_rst = 1;
+	pc_rst = 1;
 
       execute:
       begin
@@ -113,14 +116,39 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
           alu_op[0] = 1'b1;
         //if oppcode is 8 then alu_op bit 1 is zero
         if(opcode == 8)
-          alu_op[1] = 1'b0;
+          alu_op[1] <= 1'b0;
+	//if (opcode == LOD && mm == 8)
+	//  mm_sel <= 1'b1;
+	//if (opcode == STR && mm == 8)
+	//  mm_sel <= 1'b1;
+	  
       end
 		
       mem://make sure output of alu immedeate or not so at the beginning of writeback
       begin
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
         if(opcode == 8 && mm == 8)
-          alu_op[0] = 1'b1;
+          alu_op[0] <= 1'b1;
+	if (opcode == LOD)
+	  wb_sel[0] <= 1;
+	if (opcode == SWP) begin
+	  wb_sel[1] <= 1;
+	  wb_sel[0] <= 0;
+	end
+	if (opcode == LOD) begin 
+	  if (mm == 8)
+	  	mm_sel <= 1;
+
+	  rb_sel <= 1;
+          rf_we <= 1;
+	end
+	if (opcode == STR) begin
+	  if (mm == 8)
+	  	mm_sel <= 1;
+
+	  rb_sel <= 1;
+	  dm_we <= 1;
+	end
       end
 
       writeback:
@@ -128,7 +156,15 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
         //write back to the register file
         //wher rfwe is set to 1 if opcode is 8
         if(opcode == 8)
-          rf_we = 1;
+          rf_we <= 1;
+	if (opcode == LOD)
+	  wb_sel[0] <= 1;
+	if (opcode == SWP) begin
+	  wb_sel[1] <= 1;
+	  wb_sel[0] <= 1;
+	end
+	//if (opcode == LOD && mm == 8)
+	//  mm_sel <= 1;
       end
     endcase
   end

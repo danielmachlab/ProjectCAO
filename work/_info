@@ -9,7 +9,7 @@ z2
 cModel Technology
 dc:/program files/Modeltech_pe_edu_10.4a/examples
 valu
-Z0 !s110 1522013905
+Z0 !s110 1523846976
 !i10b 1
 !s100 W0L>RIQWAR4jllG6FV6gf1
 IQdf10aEL0c`SecmNNIOC;2
@@ -23,12 +23,12 @@ Z4 OP;L;10.4a;61
 r1
 !s85 0
 31
-Z5 !s108 1522013905.000000
+!s108 1523846975.000000
 !s107 C:/Users/ted/ProjectCAO/alu.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/alu.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/alu.v|
 !s101 -O0
 !i113 1
-Z6 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+Z5 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
 vbr
 R0
 !i10b 1
@@ -36,7 +36,7 @@ R0
 IR0bU]`:PAB5ekSRk?N7C33
 R1
 R2
-Z7 w1520322303
+Z6 w1520322303
 8C:/Users/ted/ProjectCAO/br.v
 FC:/Users/ted/ProjectCAO/br.v
 L0 6
@@ -44,20 +44,20 @@ R4
 r1
 !s85 0
 31
-R5
+Z7 !s108 1523846976.000000
 !s107 C:/Users/ted/ProjectCAO/br.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/br.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/br.v|
 !s101 -O0
 !i113 1
-R6
+R5
 vctrl
-Z8 !s110 1522013906
+R0
 !i10b 1
-!s100 kl<_:9BgACmXOIOl<bgoS0
-ISBzPnS0BgXZO2cbHYP><F2
+!s100 1<`gKgeC?WP6A8i4k02FZ0
+I51QLTilZHL]:[b>QEIF?a3
 R1
 R2
-w1521835442
+w1523845611
 8C:/Users/ted/ProjectCAO/ctrl.v
 FC:/Users/ted/ProjectCAO/ctrl.v
 L0 6
@@ -65,20 +65,41 @@ R4
 r1
 !s85 0
 31
-R5
+R7
 !s107 C:/Users/ted/ProjectCAO/ctrl.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/ctrl.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/ctrl.v|
 !s101 -O0
 !i113 1
-R6
+R5
+vdm
+R0
+!i10b 1
+!s100 kihl?Qn<PgXhX::X?MDYP2
+I@9YhSGa?l@GR3oH;iRJSz3
+R1
+R2
+w1523837876
+8C:/Users/ted/ProjectCAO/dm.v
+FC:/Users/ted/ProjectCAO/dm.v
+L0 6
+R4
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/ted/ProjectCAO/dm.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/dm.v|
+!s101 -O0
+!i113 1
+R5
 vim
-R8
+Z8 !s110 1523846977
 !i10b 1
 !s100 YmTHVZdXTiL976]ER;gBQ0
 ImLg>=Rc`aAl8TbPNjUbWB1
 R1
 R2
-R7
+R6
 8C:/Users/ted/ProjectCAO/im.v
 FC:/Users/ted/ProjectCAO/im.v
 L0 6
@@ -86,12 +107,12 @@ R4
 r1
 !s85 0
 31
-Z9 !s108 1522013906.000000
+Z9 !s108 1523846977.000000
 !s107 C:/Users/ted/ProjectCAO/im.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/im.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/im.v|
 !s101 -O0
 !i113 1
-R6
+R5
 vir
 R8
 !i10b 1
@@ -99,7 +120,7 @@ R8
 I;9`<ekV=Tzok?GOAia<7g0
 R1
 R2
-R7
+R6
 8C:/Users/ted/ProjectCAO/ir.v
 FC:/Users/ted/ProjectCAO/ir.v
 L0 6
@@ -109,10 +130,31 @@ r1
 31
 R9
 !s107 C:/Users/ted/ProjectCAO/ir.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/ir.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/ir.v|
 !s101 -O0
 !i113 1
-R6
+R5
+vmux16
+R8
+!i10b 1
+!s100 1gCO>JZ`Do?hB2?NRTQUV3
+I[im0SYBSaFd2m=ZkDZchD1
+R1
+R2
+Z10 w1523833806
+8C:/Users/ted/ProjectCAO/mux16.v
+FC:/Users/ted/ProjectCAO/mux16.v
+L0 6
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/ted/ProjectCAO/mux16.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/mux16.v|
+!s101 -O0
+!i113 1
+R5
 vmux32
 R8
 !i10b 1
@@ -130,12 +172,12 @@ r1
 31
 R9
 !s107 C:/Users/ted/ProjectCAO/mux32.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/mux32.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/mux32.v|
 !s101 -O0
 !i113 1
-R6
+R5
 vmux4
-R8
+Z11 !s110 1523846978
 !i10b 1
 !s100 HRz]=:ikHCjI1m7o^]0YV0
 I4AiZQ4LFnB5NX>3Ul2d_U3
@@ -151,12 +193,12 @@ r1
 31
 R9
 !s107 C:/Users/ted/ProjectCAO/mux4.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/mux4.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/mux4.v|
 !s101 -O0
 !i113 1
-R6
+R5
 vpc
-R8
+R11
 !i10b 1
 !s100 g^<1nG1lh^PTV0;zBeBzj0
 IReX]hnNibH7^z45>?D4iU1
@@ -170,14 +212,14 @@ R4
 r1
 !s85 0
 31
-R9
+Z12 !s108 1523846978.000000
 !s107 C:/Users/ted/ProjectCAO/pc.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/pc.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/pc.v|
 !s101 -O0
 !i113 1
-R6
+R5
 vrf
-Z10 !s110 1522013907
+R11
 !i10b 1
 !s100 Y]X9S761=bZX00UjaD]Ro3
 I8z`E]`0JZi;E720;eW@j40
@@ -191,20 +233,20 @@ R4
 r1
 !s85 0
 31
-Z11 !s108 1522013907.000000
+R12
 !s107 C:/Users/ted/ProjectCAO/rf.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/rf.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/rf.v|
 !s101 -O0
 !i113 1
-R6
+R5
 vsisc
-R10
+R11
 !i10b 1
-!s100 Xm]j]PTf3K:PZ5eVIP^0i2
-I^P<^G:fUPN]G@^JV@=ed`1
+!s100 >k=]d]az25DXT[;G00@gI2
+I_3EcUCV0Z:1LTQlFP[6^l1
 R1
 R2
-w1521835115
+w1523838022
 8C:/Users/ted/ProjectCAO/SISC.v
 FC:/Users/ted/ProjectCAO/SISC.v
 L0 6
@@ -212,35 +254,35 @@ R4
 r1
 !s85 0
 31
-R11
+R12
 !s107 C:/Users/ted/ProjectCAO/SISC.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/SISC.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/SISC.v|
 !s101 -O0
 !i113 1
-R6
+R5
 vsisc_tb
-R10
+Z13 !s110 1523846979
 !i10b 1
 !s100 XJeQjmc9lBbBAOaQHdTH11
-I2H7M`UFjZzRn13m]3kc^b0
+IQb@@Zkbkc_RFJmO2Phd^W2
 R1
 R2
-w1520322918
-8C:/Users/ted/ProjectCAO/sisc_tb_p2.v
-FC:/Users/ted/ProjectCAO/sisc_tb_p2.v
+R10
+8C:/Users/ted/ProjectCAO/sisc_tb_p3.v
+FC:/Users/ted/ProjectCAO/sisc_tb_p3.v
 L0 6
 R4
 r1
 !s85 0
 31
-R11
-!s107 C:/Users/ted/ProjectCAO/sisc_tb_p2.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/sisc_tb_p2.v|
+R12
+!s107 C:/Users/ted/ProjectCAO/sisc_tb_p3.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/sisc_tb_p3.v|
 !s101 -O0
 !i113 1
-R6
+R5
 vstatreg
-R10
+R13
 !i10b 1
 !s100 N8RNk@:0mCn87Q8FG?AQL3
 IKFcOYTmiVQT[Md`ZP?hH^0
@@ -254,9 +296,9 @@ R4
 r1
 !s85 0
 31
-R11
+!s108 1523846979.000000
 !s107 C:/Users/ted/ProjectCAO/statreg.v|
-!s90 -reportprogress|300|-work|work|C:/Users/ted/ProjectCAO/statreg.v|
+!s90 -reportprogress|300|-work|work|-L|mtiAvm|-L|mtiRnm|-L|mtiOvm|-L|mtiUvm|-L|mtiUPF|-L|infact|-O0|C:/Users/ted/ProjectCAO/statreg.v|
 !s101 -O0
 !i113 1
-R6
+R5
