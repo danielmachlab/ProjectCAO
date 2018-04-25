@@ -38,7 +38,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
   always @(present_state, rst_f)
   begin 
     if (rst_f == 0)
-      present_state <= start1;
+      present_state = start1;
     else
     begin
       case (present_state)
@@ -72,23 +72,26 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
        add the new control signals here. */
   always @ (present_state,opcode,mm)
   begin
-    rf_we <= 1'b0;
-    alu_op <= 2'b10;
-    wb_sel <= 2'b00;
-    pc_write <= 1'b0;
-    pc_sel <= 1'b0; //arbitrary
-    pc_rst <= 1'b0; //arbitrary
-    ir_load <= 1'b0;
-    mm_sel <= 1'b0;
-    dm_we <= 1'b0;
+    rf_we = 1'b0;
+    alu_op = 2'b10;
+    wb_sel = 2'b00;
+    pc_write = 1'b0;
+    pc_sel = 1'b0; //arbitrary
+    pc_rst = 1'b0; //arbitrary
+    ir_load = 1'b0;
+    mm_sel = 1'b0;
+    dm_we = 1'b0;
 
     case(present_state)
+      start1:
+      begin
+	pc_rst = 1;
+      end
+
       fetch: //done
       begin
-        ir_load <= 1;
-	pc_write <= 1;
-	//increment PC in fetch
-        pc_sel <= 0;   
+        ir_load = 1;
+	pc_write = 1;  
       end
 
       decode:
@@ -96,18 +99,15 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 	pc_sel = 1'b1;
 	//could be in execute.  Here because nothing else happens here.
 	if(opcode == BRA || opcode == BNE)//absolute
-	   br_sel <= 1;
+	   br_sel = 1;
 	if(opcode == BRR || opcode == BNR)
-	   br_sel <= 0;
+	   br_sel = 0;
 	if((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
-	   pc_write <= 1;
+	   pc_write = 1;
 	if((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
-	   pc_write <= 1;
+	   pc_write = 1;
         
       end
-
-      start1:
-	pc_rst = 1;
 
       execute:
       begin
@@ -116,11 +116,11 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
           alu_op[0] = 1'b1;
         //if oppcode is 8 then alu_op bit 1 is zero
         if(opcode == 8)
-          alu_op[1] <= 1'b0;
+          alu_op[1] = 1'b0;
 	//if (opcode == LOD && mm == 8)
-	//  mm_sel <= 1'b1;
+	//  mm_sel = 1'b1;
 	//if (opcode == STR && mm == 8)
-	//  mm_sel <= 1'b1;
+	//  mm_sel = 1'b1;
 	  
       end
 		
@@ -128,26 +128,26 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
       begin
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
         if(opcode == 8 && mm == 8)
-          alu_op[0] <= 1'b1;
+          alu_op[0] = 1'b1;
 	if (opcode == LOD)
-	  wb_sel[0] <= 1;
+	  wb_sel[0] = 1;
 	if (opcode == SWP) begin
-	  wb_sel[1] <= 1;
-	  wb_sel[0] <= 0;
+	  wb_sel[1] = 1;
+	  wb_sel[0] = 0;
 	end
 	if (opcode == LOD) begin 
 	  if (mm == 8)
-	  	mm_sel <= 1;
+	  	mm_sel = 1;
 
-	  rb_sel <= 1;
-          rf_we <= 1;
+	  rb_sel = 1;
+          rf_we = 1;
 	end
 	if (opcode == STR) begin
 	  if (mm == 8)
-	  	mm_sel <= 1;
+	  	mm_sel = 1;
 
-	  rb_sel <= 1;
-	  dm_we <= 1;
+	  rb_sel = 1;
+	  dm_we = 1;
 	end
       end
 
@@ -156,15 +156,15 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
         //write back to the register file
         //wher rfwe is set to 1 if opcode is 8
         if(opcode == 8)
-          rf_we <= 1;
+          rf_we = 1;
 	if (opcode == LOD)
-	  wb_sel[0] <= 1;
+	  wb_sel[0] = 1;
 	if (opcode == SWP) begin
-	  wb_sel[1] <= 1;
-	  wb_sel[0] <= 1;
+	  wb_sel[1] = 1;
+	  wb_sel[0] = 1;
 	end
 	//if (opcode == LOD && mm == 8)
-	//  mm_sel <= 1;
+	//  mm_sel = 1;
       end
     endcase
   end
