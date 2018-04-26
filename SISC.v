@@ -35,7 +35,7 @@ module sisc (clk, rst_f);
   // put a $monitor statement here.  
   initial
   begin
-    $monitor("ir=%h, pc=%h, r1=%h, r2=%h, r3=%h, r4=%h, r5=%h, alu_op=%h, br_sel=%h, pc_write=%h, pc_sel=%h", instr, pc_out, u5.ram_array[1], u5.ram_array[2], u5.ram_array[3], u5.ram_array[4], u5.ram_array[5], alu_op, br_sel, pc_write, pc_sel); 
+    $monitor("ir=%h, pc=%h, r1=%h, r2=%h, r3=%h, r4=%h, r5=%h, alu_op=%h, br_sel=%h, pc_write=%h, pc_sel=%h, m[8]=%h,m[9]=%h,mux16=%h", instr, pc_out, u5.ram_array[1], u5.ram_array[2], u5.ram_array[3], u5.ram_array[4], u5.ram_array[5], alu_op, br_sel, pc_write, pc_sel,u12.ram_array[8],u12.ram_array[9],mux16_out); 
   end
  
 endmodule

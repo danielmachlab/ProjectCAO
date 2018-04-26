@@ -1,0 +1,92 @@
+C:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module sisc_tb
+
+Top level modules:
+	sisc_tb
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/dm.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/dm.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module dm
+
+Top level modules:
+	dm
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/SISC.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/SISC.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module sisc
+
+Top level modules:
+	sisc
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/ir.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/ir.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ir
+
+Top level modules:
+	ir
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/pc.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/pc.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module pc
+
+Top level modules:
+	pc
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/br.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/br.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module br
+
+Top level modules:
+	br
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/mux4.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/mux4.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mux4
+
+Top level modules:
+	mux4
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/mux32.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/mux32.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mux32
+
+Top level modules:
+	mux32
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/rf.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/rf.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module rf
+
+Top level modules:
+	rf
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/mux16.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/mux16.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mux16
+
+Top level modules:
+	mux16
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/statreg.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/statreg.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module statreg
+
+Top level modules:
+	statreg
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/alu.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/alu.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} C:/Git/School/CompArch/ProjectCAO/im.v {1 {vlog -work work -stats=none C:/Git/School/CompArch/ProjectCAO/im.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module im
+
+Top level modules:
+	im
+
+} {} {}}

@@ -85,7 +85,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
     case(present_state)
       start1:
       begin
-	pc_rst = 1;
+	  pc_rst = 1;
       end
 
       fetch: //done
@@ -96,75 +96,102 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 
       decode:
       begin
-	pc_sel = 1'b1;
-	//could be in execute.  Here because nothing else happens here.
-	if(opcode == BRA || opcode == BNE)//absolute
-	   br_sel = 1;
-	if(opcode == BRR || opcode == BNR)
-	   br_sel = 0;
-	if((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
-	   pc_write = 1;
-	if((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
-	   pc_write = 1;
+        pc_sel = 1'b1;
+        //could be in execute.  Here because nothing else happens here.
+        if(opcode == BRA || opcode == BNE)//absolute
+          br_sel = 1;
+        if(opcode == BRR || opcode == BNR)
+          br_sel = 0;
+        if((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
+          pc_write = 1;
+        if((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
+          pc_write = 1;
         
       end
 
       execute:
       begin
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
-        if(opcode == 8 && mm == 8)
-          alu_op[0] = 1'b1;
-        //if oppcode is 8 then alu_op bit 1 is zero
-        if(opcode == 8)
-          alu_op[1] = 1'b0;
-	//if (opcode == LOD && mm == 8)
-	//  mm_sel = 1'b1;
-	//if (opcode == STR && mm == 8)
-	//  mm_sel = 1'b1;
-	  
+       
+
+        if((opcode == LOD || opcode == STR) && mm ==8)
+        begin
+          alu_op[0] =  1'b1;
+	  alu_op[1] =  1'b0;
+        end
+ 	if((opcode == LOD || opcode == STR) && mm ==0)
+	begin
+	  alu_op[0] =  1'b0;
+	  alu_op[1] =  1'b0;
+        end
+
       end
 		
       mem://make sure output of alu immedeate or not so at the beginning of writeback
       begin
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
-        if(opcode == 8 && mm == 8)
+         if(opcode == ALU_OP && mm == 8)
+	begin
           alu_op[0] = 1'b1;
-	if (opcode == LOD)
-	  wb_sel[0] = 1;
-	if (opcode == SWP) begin
-	  wb_sel[1] = 1;
-	  wb_sel[0] = 0;
+	  alu_op[1] = 1'b0;
 	end
-	if (opcode == LOD) begin 
-	  if (mm == 8)
-	  	mm_sel = 1;
-
-	  rb_sel = 1;
+        //if oppcode is 8 then alu_op bit 1 is zero
+        else if(opcode == ALU_OP)
+	begin
+          alu_op[1] = 1'b0;
+	  alu_op[0] = 1'b0;
+	end
+       
+        if (opcode == LOD) begin 
+          wb_sel[0] = 1;
+          if (mm == 8)
+            mm_sel = 0;
+          if (mm == 0)
+            mm_sel = 1;
+          rb_sel = 1;
           rf_we = 1;
-	end
-	if (opcode == STR) begin
-	  if (mm == 8)
-	  	mm_sel = 1;
-
-	  rb_sel = 1;
-	  dm_we = 1;
-	end
+        end
+        if (opcode == STR) begin
+          wb_sel[1] = 1;
+          wb_sel[0] = 0;
+          if (mm == 8)
+            mm_sel = 0;
+          if (mm == 0)
+            mm_sel = 1;
+          rb_sel = 1;
+          dm_we = 1;
+        end
       end
 
       writeback:
       begin
         //write back to the register file
         //wher rfwe is set to 1 if opcode is 8
-        if(opcode == 8)
+        /*if(opcode == 8)
           rf_we = 1;
-	if (opcode == LOD)
-	  wb_sel[0] = 1;
-	if (opcode == SWP) begin
-	  wb_sel[1] = 1;
-	  wb_sel[0] = 1;
-	end
-	//if (opcode == LOD && mm == 8)
-	//  mm_sel = 1;
+        if (opcode == LOD)
+        begin
+
+          wb_sel[0] = 1;
+          if (mm == 8)
+            mm_sel = 1;
+          if (mm == 0)
+            mm_sel = 0;
+
+        end
+          */
+        if (opcode == SWP)
+        begin
+          wb_sel[1] = 1;
+          wb_sel[0] = 1;
+          if (mm == 8)
+            mm_sel = 1;
+          if (mm == 0)
+            mm_sel = 0;
+
+        end
+        //if (opcode == LOD && mm == 8)
+        //  mm_sel = 1;
       end
     endcase
   end
