@@ -3,16 +3,15 @@
 
 `timescale 1ns/100ps
 
-module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load, mm_sel, dm_we);
+module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load);
 
   // Declare the ports listed above as inputs or outputs
   input clk, rst_f;
   input [3:0] opcode, mm, stat;
-  output [1:0] alu_op, wb_sel;
-  output rf_we, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load, mm_sel, dm_we;
+  output rf_we, wb_sel, alu_op, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load;
 
-  reg rf_we, pc_write, pc_sel, pc_rst, ir_load, br_sel, mm_sel, dm_we, rb_sel;
-  reg [1:0] alu_op, wb_sel;
+  reg rf_we, wb_sel, pc_write, pc_sel, pc_rst, ir_load, br_sel;
+  reg [1:0] alu_op;
   
   // states
   parameter start0 = 0, start1 = 1, fetch = 2, decode = 3, execute = 4, mem = 5, writeback = 6;
@@ -38,7 +37,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
   always @(present_state, rst_f)
   begin 
     if (rst_f == 0)
-      present_state = start1;
+      present_state <= start1;
     else
     begin
       case (present_state)
@@ -74,124 +73,61 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
   begin
     rf_we = 1'b0;
     alu_op = 2'b10;
-    wb_sel = 2'b00;
+    wb_sel = 1'b0;
     pc_write = 1'b0;
     pc_sel = 1'b0; //arbitrary
     pc_rst = 1'b0; //arbitrary
-    ir_load = 1'b0;
-    mm_sel = 1'b0;
-    dm_we = 1'b0;
-
+    ir_load = 1'b0; ///
     case(present_state)
-      start1:
-      begin
-	  pc_rst = 1;
-      end
-
       fetch: //done
       begin
         ir_load = 1;
-	pc_write = 1;  
+	pc_write = 1;
+	//increment PC in fetch
+        pc_sel = 0;   
       end
 
       decode:
       begin
-        pc_sel = 1'b1;
-        //could be in execute.  Here because nothing else happens here.
-        if(opcode == BRA || opcode == BNE)//absolute
-          br_sel = 1;
-        if(opcode == BRR || opcode == BNR)
-          br_sel = 0;
-        if((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
-          pc_write = 1;
-        if((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
-          pc_write = 1;
+	pc_sel = 1'b1;
+	//could be in execute.  Here because nothing else happens here.
+	if(opcode == BRA || opcode == BNE)//absolute
+	   br_sel = 1;
+	if(opcode == BRR || opcode == BNR)
+	   br_sel = 0;
+	if((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
+	   pc_write = 1;
+	if((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
+	   pc_write = 1;
         
       end
+
+      start1:
+	pc_rst = 1;
 
       execute:
       begin
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
-        if(opcode == ALU_OP && mm == 8)
-	begin
+        if(opcode == 8 && mm == 8)
           alu_op[0] = 1'b1;
-	  alu_op[1] = 1'b0;
-	end
         //if oppcode is 8 then alu_op bit 1 is zero
-        else if(opcode == ALU_OP)
-	begin
+        if(opcode == 8)
           alu_op[1] = 1'b0;
-	  alu_op[0] = 1'b0;
-	end
-
-        if((opcode == LOD || opcode == STR) && mm ==8)
-        begin
-          alu_op[0] =  1'b1;
-	  alu_op[1] =  1'b0;
-        end
- 	if((opcode == LOD || opcode == STR) && mm ==0)
-	begin
-	  alu_op[0] =  1'b0;
-	  alu_op[1] =  1'b0;
-        end
-
       end
 		
       mem://make sure output of alu immedeate or not so at the beginning of writeback
       begin
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
-       
-       
-        if (opcode == LOD) begin 
-          wb_sel[0] = 1;
-          if (mm == 8)
-            mm_sel = 0;
-          if (mm == 0)
-            mm_sel = 1;
-          rb_sel = 1;
-          rf_we = 1;
-        end
-        if (opcode == STR) begin
-          wb_sel[1] = 1;
-          wb_sel[0] = 0;
-          if (mm == 8)
-            mm_sel = 0;
-          if (mm == 0)
-            mm_sel = 1;
-          rb_sel = 1;
-          dm_we = 1;
-        end
+        if(opcode == 8 && mm == 8)
+          alu_op[0] = 1'b1;
       end
 
       writeback:
       begin
         //write back to the register file
         //wher rfwe is set to 1 if opcode is 8
-        /*if(opcode == 8)
+        if(opcode == 8)
           rf_we = 1;
-        if (opcode == LOD)
-        begin
-
-          wb_sel[0] = 1;
-          if (mm == 8)
-            mm_sel = 1;
-          if (mm == 0)
-            mm_sel = 0;
-
-        end
-          */
-        if (opcode == SWP)
-        begin
-          wb_sel[1] = 1;
-          wb_sel[0] = 1;
-          if (mm == 8)
-            mm_sel = 1;
-          if (mm == 0)
-            mm_sel = 0;
-
-        end
-        //if (opcode == LOD && mm == 8)
-        //  mm_sel = 1;
       end
     endcase
   end

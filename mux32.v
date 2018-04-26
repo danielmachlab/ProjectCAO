@@ -3,17 +3,15 @@
 
 `timescale 1ns/100ps
 
-module mux32 (in_a, in_b, in_c, in_d, sel, out);
+module mux32 (in_a, in_b, in_c,in_d, sel, out);
 
   /*
    *  32-BIT MULTIPLEXER - mux32.v
    *
    *  Inputs:
-   *   - in_a (32 bits): First input to multiplexer. Selected when sel = 00.
-   *   - in_b (32 bits): Second input. Selected when sel = 01.
-   *   - in_c (32 bits): Third input. Selected when sel = 10.
-   *   - in_d (32 bits): Fourth input. Selected when sel = 11.
-   *   - sel: (2 bits): Selects which input propagates to output.
+   *   - in_a (32 bits): First input to multiplexer. Selected when sel = 0.
+   *   - in_b (32 bits): Second input. Selected when sel = 1.
+   *   - sel: Selects which input propagates to output.
    *
    *  Outputs:
    *   - out (32 bits): Multiplexer output.
@@ -21,15 +19,13 @@ module mux32 (in_a, in_b, in_c, in_d, sel, out);
    */
 
   input  [31:0] in_a;
-  input  [31:0] in_b;
-  input  [31:0] in_c;
-  input  [31:0] in_d;
+  input  [31:0] in_b, in_c, in_d;
   input   [1:0] sel;
   output [31:0] out;
 
   reg   [31:0] outreg;
    
-  always @ (in_a, in_b, sel)
+  always @ (in_a, in_b, in_c, in_d, sel)
   begin
     if (sel == 2'b00)
       outreg = in_a;
