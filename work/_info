@@ -9,13 +9,13 @@ z2
 cModel Technology
 dc:/program files/Modeltech_pe_edu_10.4a/examples
 valu
-Z0 !s110 1524777886
+Z0 !s110 1525103274
 !i10b 1
 !s100 W0L>RIQWAR4jllG6FV6gf1
 IkhcIZ3DK5@Bci0>FdL6DP0
 Z1 VDg1SIo80bB@j0V0VzS_@n1
 Z2 dC:/Git/School/CompArch/ProjectCAO
-Z3 w1524767608
+Z3 w1524778966
 8C:/Git/School/CompArch/ProjectCAO/alu.v
 FC:/Git/School/CompArch/ProjectCAO/alu.v
 L0 6
@@ -23,9 +23,9 @@ Z4 OP;L;10.4a;61
 r1
 !s85 0
 31
-Z5 !s108 1524777886.000000
+Z5 !s108 1525103274.000000
 Z6 !s107 C:/Git/School/CompArch/ProjectCAO/statreg.v|C:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v|C:/Git/School/CompArch/ProjectCAO/SISC.v|C:/Git/School/CompArch/ProjectCAO/rf.v|C:/Git/School/CompArch/ProjectCAO/pc.v|C:/Git/School/CompArch/ProjectCAO/mux32.v|C:/Git/School/CompArch/ProjectCAO/mux16.v|C:/Git/School/CompArch/ProjectCAO/mux4.v|C:/Git/School/CompArch/ProjectCAO/ir.v|C:/Git/School/CompArch/ProjectCAO/im.v|C:/Git/School/CompArch/ProjectCAO/dm.v|C:/Git/School/CompArch/ProjectCAO/ctrl.v|C:/Git/School/CompArch/ProjectCAO/br.v|C:/Git/School/CompArch/ProjectCAO/alu.v|
-Z7 !s90 -reportprogress|30|-work|work|C:/Git/School/CompArch/ProjectCAO/alu.v|C:/Git/School/CompArch/ProjectCAO/br.v|C:/Git/School/CompArch/ProjectCAO/ctrl.v|C:/Git/School/CompArch/ProjectCAO/dm.v|C:/Git/School/CompArch/ProjectCAO/im.v|C:/Git/School/CompArch/ProjectCAO/ir.v|C:/Git/School/CompArch/ProjectCAO/mux4.v|C:/Git/School/CompArch/ProjectCAO/mux16.v|C:/Git/School/CompArch/ProjectCAO/mux32.v|C:/Git/School/CompArch/ProjectCAO/pc.v|C:/Git/School/CompArch/ProjectCAO/rf.v|C:/Git/School/CompArch/ProjectCAO/SISC.v|C:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v|C:/Git/School/CompArch/ProjectCAO/statreg.v|
+Z7 !s90 -reportprogress|300|-work|work|C:/Git/School/CompArch/ProjectCAO/alu.v|C:/Git/School/CompArch/ProjectCAO/br.v|C:/Git/School/CompArch/ProjectCAO/ctrl.v|C:/Git/School/CompArch/ProjectCAO/dm.v|C:/Git/School/CompArch/ProjectCAO/im.v|C:/Git/School/CompArch/ProjectCAO/ir.v|C:/Git/School/CompArch/ProjectCAO/mux4.v|C:/Git/School/CompArch/ProjectCAO/mux16.v|C:/Git/School/CompArch/ProjectCAO/mux32.v|C:/Git/School/CompArch/ProjectCAO/pc.v|C:/Git/School/CompArch/ProjectCAO/rf.v|C:/Git/School/CompArch/ProjectCAO/SISC.v|C:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v|C:/Git/School/CompArch/ProjectCAO/statreg.v|
 !s101 -O0
 !i113 1
 Z8 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
@@ -53,11 +53,11 @@ R8
 vctrl
 R0
 !i10b 1
-!s100 o_TfZC0W@AI9=WL@Cc;333
-IY93ZRI`7z6PSdnbYBeh4h3
+!s100 leN`@M06Ul;JiFQQE:UX@3
+IPGCmR=zfN6:1LA]TG:afN2
 R1
 R2
-w1524776757
+w1525103191
 8C:/Git/School/CompArch/ProjectCAO/ctrl.v
 FC:/Git/School/CompArch/ProjectCAO/ctrl.v
 L0 6
@@ -78,7 +78,7 @@ R0
 IMg58S@^Fli^l^B<=nY:DJ3
 R1
 R2
-w1460401250
+R3
 8C:/Git/School/CompArch/ProjectCAO/dm.v
 FC:/Git/School/CompArch/ProjectCAO/dm.v
 L0 6
@@ -120,7 +120,7 @@ R0
 IgGFPd^VDliPViFKUh2FG93
 R1
 R2
-w1520325321
+R3
 8C:/Git/School/CompArch/ProjectCAO/ir.v
 FC:/Git/School/CompArch/ProjectCAO/ir.v
 L0 6
@@ -137,11 +137,11 @@ R8
 vmux16
 R0
 !i10b 1
-!s100 1gCO>JZ`Do?hB2?NRTQUV3
-I?lX4[gT0?efW1>zflXa9C2
+!s100 330B^2gB1>l674]R_l0]_3
+Iizez^>jTa?i;Al8D?:BAN3
 R1
 R2
-w1454963334
+w1525103250
 8C:/Git/School/CompArch/ProjectCAO/mux16.v
 FC:/Git/School/CompArch/ProjectCAO/mux16.v
 L0 6
@@ -162,7 +162,7 @@ R0
 IN<M>GGKKB]8^;g@iYHR`n0
 R1
 R2
-w1524775750
+R3
 8C:/Git/School/CompArch/ProjectCAO/mux32.v
 FC:/Git/School/CompArch/ProjectCAO/mux32.v
 L0 6
@@ -204,7 +204,7 @@ R0
 IhM1zD4zBgIfAGAPTnHZ1e3
 R1
 R2
-w1524767639
+R3
 8C:/Git/School/CompArch/ProjectCAO/pc.v
 FC:/Git/School/CompArch/ProjectCAO/pc.v
 L0 6
@@ -225,7 +225,7 @@ R0
 IeC>h:En?=b;bHcn1nCm5K2
 R1
 R2
-w1520026177
+R3
 8C:/Git/School/CompArch/ProjectCAO/rf.v
 FC:/Git/School/CompArch/ProjectCAO/rf.v
 L0 6
@@ -242,11 +242,11 @@ R8
 vsisc
 R0
 !i10b 1
-!s100 <]kUkLnGUj;BNP<g_I<6B2
-I:`meeoT@mjKK[2n;0JB;43
+!s100 >5c9bGLi@XNAMW9Qo]BOG1
+I?hYkd?m^OzRcP^iznHbJK2
 R1
 R2
-w1524776207
+w1525103272
 8C:/Git/School/CompArch/ProjectCAO/SISC.v
 FC:/Git/School/CompArch/ProjectCAO/SISC.v
 L0 6
@@ -267,7 +267,7 @@ R0
 IfW^D[h5g1Fz4HbAXJHk4]1
 R1
 R2
-w1492434345
+R3
 8C:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v
 FC:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v
 L0 6

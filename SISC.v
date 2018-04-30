@@ -10,9 +10,9 @@ module sisc (clk, rst_f);
   // declare all internal wires here
   wire [31:0] rsa, rsb, alu_result, out_32, read_data, instr, dm_out;
   wire [3:0]  sr_out, sr_in, out_4, out_42; // now it's correct
-  wire [1:0]  alu_op, wb_sel;
+  wire [1:0]  alu_op, mm_sel, wb_sel;
   wire [15:0] pc_out, br_addr, mux16_out;
-  wire        rf_we, sr_enable, sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load, mm_sel, dm_we, swp_sel;
+  wire        rf_we, sr_enable, sel, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load,  dm_we, swp_sel;
   
   // component instantiation goes here
   alu u1(clk, rsa, rsb, instr[15:0]/*imm*/, alu_op, alu_result, /*stat-double check*/ sr_in, sr_enable); //taking alu def and naming it u1
@@ -29,7 +29,7 @@ module sisc (clk, rst_f);
   br u10(pc_out, instr[15:0]/*imm*/, br_sel, br_addr);
 
   // part 3 instantiation
-  mux16 u11(alu_result[15:0], instr[15:0], mm_sel, mux16_out);
+  mux16 u11(alu_result[15:0], instr[15:0],rsa[15:0], mm_sel, mux16_out);
   dm u12(mux16_out, mux16_out, rsb, dm_we, dm_out);
   mux4 u13(instr[19:16],instr[23:20] , swp_sel, out_42);
 

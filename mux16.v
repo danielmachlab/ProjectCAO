@@ -3,7 +3,7 @@
 
 `timescale 1ns/100ps
 
-module mux16 (in_a, in_b, sel, out);
+module mux16 (in_a, in_b,in_c, sel, out);
 
   /*
    *  16-BIT MULTIPLEXER - mux16.v
@@ -20,17 +20,20 @@ module mux16 (in_a, in_b, sel, out);
 
   input  [15:0] in_a;
   input  [15:0] in_b;
-  input         sel;
+  input  [15:0] in_c;
+  input  [1:0]   sel;
   output [15:0] out;
 
   reg   [15:0] out;
    
-  always @ (in_a, in_b, sel)
+  always @ (in_a, in_b, in_c, sel)
   begin
-    if (sel == 1'b0)
+    if (sel == 2'b00)
       out <= in_a;
-    else
+    else if ( sel == 2'b01)
       out <= in_b;
+    else if ( sel == 2'b10)
+       out <= in_c;
   end
 
 endmodule 

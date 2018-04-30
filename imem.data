@@ -65,6 +65,13 @@
 8830FFF8 //23:     ADI  R3,R0,-8     R3 <- R0 + 0x(FFFF)FFF8             Set R3 = -8
 18330010 //24:     LDX  R3,R3,16     R3 <- M(R3+0010)                    R3 = 00000006
 30140000 // this is the swap instruction it switches r1 for r4
+29          // STP
+21          // STR
+
+19          // LDP
+11          // LDR
+
+
 F0000000 //25:     HLT                                                   Halt program
 
 

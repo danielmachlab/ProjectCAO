@@ -10,8 +10,8 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
   input [3:0] opcode, mm, stat;
   output rf_we, wb_sel, alu_op, br_sel, pc_rst, pc_write, pc_sel, rb_sel, ir_load, mm_sel, dm_we,swp_sel;
 
-  reg rf_we, pc_write, pc_sel, pc_rst, ir_load, br_sel,mm_sel, dm_we, rb_sel,swp_sel;
-  reg [1:0] wb_sel,alu_op;
+  reg rf_we, pc_write, pc_sel, pc_rst, ir_load, br_sel, dm_we, rb_sel,swp_sel;
+  reg [1:0] wb_sel,alu_op, mm_sel;
   
   // states
   parameter start0 = 0, start1 = 1, fetch = 2, decode = 3, execute = 4, mem = 5, writeback = 6;
@@ -116,8 +116,18 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
         //if oppcode is 8 then alu_op bit 1 is zero
         if(opcode == 8)
           alu_op[1] = 1'b0;
-
-	if((opcode == LOD || opcode == STR) && mm ==8)
+	// Calculates the rs + imm
+	if((opcode == LOD || opcode == STR) && mm == 8)
+        begin
+          alu_op[0] =  1'b1;
+	  alu_op[1] =  1'b0;
+        end
+	if((opcode == LOD || opcode == STR) && mm == 9)
+        begin
+          alu_op[0] =  1'b1;
+	  alu_op[1] =  1'b0;
+        end
+	if((opcode == LOD || opcode == STR) && mm == 1)
         begin
           alu_op[0] =  1'b1;
 	  alu_op[1] =  1'b0;
@@ -134,25 +144,26 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
         if(opcode == 8 && mm == 8)
           alu_op[0] = 1'b1;
-	if (opcode == STR) begin
+	if (opcode == STR && (mm == 8 || mm == 0)) begin
           //wb_sel[1] = 1;
           //wb_sel[0] = 0;
           if (mm == 8) begin
-            mm_sel = 0;
+            mm_sel = 2'b00;
 	  end
           if (mm == 0) begin
-            mm_sel = 1;
+            mm_sel = 2'b01;
 	  end
           rb_sel = 1;
           dm_we = 1;
         end
-	if (opcode == LOD) begin 
+	
+	if (opcode == LOD && (mm == 8 || mm == 0)) begin 
           wb_sel[0] = 1;
 	  wb_sel[1] = 0;
           if (mm == 8)
-            mm_sel = 0;
+            mm_sel = 2'b00;
           if (mm == 0)
-            mm_sel = 1;
+            mm_sel = 2'b01;
           rb_sel = 1;
           rf_we = 1;
         end
