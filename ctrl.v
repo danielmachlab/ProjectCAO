@@ -186,7 +186,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 	     mm_sel = 2'b00;
 	  end
 	  if(mm == 1)begin // STR
-	    mm_sel = 2'b01;
+	    mm_sel = 2'b10;
 	  end
 
 	  rb_sel = 1;
@@ -199,6 +199,16 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
             mm_sel = 2'b00;
           if (mm == 0)
             mm_sel = 2'b01;
+          rb_sel = 1;
+          rf_we = 1;
+        end
+	if (opcode == LOD && (mm == 9 || mm == 1)) begin 
+          wb_sel[0] = 1;
+	  wb_sel[1] = 0;
+          if (mm == 9)
+            mm_sel = 2'b00;
+          if (mm == 1)
+            mm_sel = 2'b10;
           rb_sel = 1;
           rf_we = 1;
         end
@@ -235,11 +245,27 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 	     wb_sel = 2'b00;
 	  end
 	  if(mm == 1)begin // STR
-	    
-	  end
-
-	 
+	     swp_sel = 0;
+	     rf_we = 1;
+	     wb_sel = 2'b00;
+	  end	 
 	end
+	if (opcode == LOD && (mm == 9 || mm == 1)) begin 
+          
+          if (mm == 9)begin
+            swp_sel = 0;
+	     rf_we = 1;
+	     wb_sel = 2'b00;
+	  end
+          if (mm == 1)begin
+	     swp_sel = 0;
+	     rf_we = 1;
+	     wb_sel = 2'b00;
+
+	  end
+         
+        end
+
        end
     endcase
   end
