@@ -25,3 +25,12 @@ Exception c0000005 has occurred at address 1007698f. Traceback:
 # Platform = win32pe
 
 Exception c0000005 has occurred at address 1004e671. Traceback:
+# Current time Wed May 02 09:56:51 2018
+# ModelSim PE Student Edition Stack Trace
+# Program = vish
+# Id = "10.4a"
+# Version = "2015.03"
+# Date = "Apr  7 2015"
+# Platform = win32pe
+
+Exception c0000005 has occurred at address 1007086d. Traceback:

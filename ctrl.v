@@ -141,6 +141,31 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 		
       mem://make sure output of alu immedeate or not so at the beginning of writeback
       begin
+
+
+	if((opcode == LOD || opcode == STR) && mm == 8)
+        begin
+          alu_op[0] =  1'b1;
+	  alu_op[1] =  1'b0;
+        end
+	if((opcode == LOD || opcode == STR) && mm == 9)
+        begin
+          alu_op[0] =  1'b1;
+	  alu_op[1] =  1'b0;
+        end
+	if((opcode == LOD || opcode == STR) && mm == 1)
+        begin
+          alu_op[0] =  1'b1;
+	  alu_op[1] =  1'b0;
+        end
+ 	if((opcode == LOD || opcode == STR) && mm ==0)
+	begin
+	  alu_op[0] =  1'b0;
+	  alu_op[1] =  1'b0;
+        end
+
+
+
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
         if(opcode == 8 && mm == 8)
           alu_op[0] = 1'b1;
@@ -156,7 +181,17 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
           rb_sel = 1;
           dm_we = 1;
         end
-	
+	if(opcode == STR && (mm == 9 || mm == 1)) begin
+	  if(mm == 9)begin // STP
+	     mm_sel = 2'b00;
+	  end
+	  if(mm == 1)begin // STR
+	    mm_sel = 2'b01;
+	  end
+
+	  rb_sel = 1;
+	  dm_we = 1;
+	end
 	if (opcode == LOD && (mm == 8 || mm == 0)) begin 
           wb_sel[0] = 1;
 	  wb_sel[1] = 0;
@@ -193,7 +228,19 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
 		rf_we = 1;
 		wb_sel = 2'b11;
 	end
+	if(opcode == STR && (mm == 9 || mm == 1)) begin
+	  if(mm == 9)begin // STP
+	     swp_sel = 0;
+	     rf_we = 1;
+	     wb_sel = 2'b00;
+	  end
+	  if(mm == 1)begin // STR
+	    
+	  end
+
+	 
 	end
+       end
     endcase
   end
 
