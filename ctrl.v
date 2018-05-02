@@ -28,39 +28,30 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
   initial
     present_state = start0;
 
-  /* TODO: Write a sequential procedure that progresses the fsm to the next state on the
-       positive edge of the clock, OR resets the state to 'start1' on the negative edge
-       of rst_f. Notice that the computer is reset when rst_f is low, not high. 
-	TODO: Write a combination procedure that determines the next state of the fsm. */
-
-
-  always @(present_state, rst_f)
-  begin 
+  always @(present_state, rst_f) begin 
     if (rst_f == 0)
       present_state <= start1;
-    else
-    begin
+    else begin
       case (present_state)
         start0: 
-	  next_state <= start1;
+	        next_state <= start1;
         start1: 
-	  next_state <= fetch;
+	        next_state <= fetch;
         fetch: 
-	  next_state <= decode;
+	        next_state <= decode;
         decode: 
-	  next_state <= execute;
+	        next_state <= execute;
         execute: 
-	  next_state <= mem;
+	        next_state <= mem;
         mem: 
-	  next_state <= writeback;
+	        next_state <= writeback;
         writeback: 
-	  next_state <= fetch;
+	        next_state <= fetch;
       endcase
     end
-  end
+  end // end always
 
-  always @(posedge clk, negedge rst_f)
-  begin
+  always @(posedge clk, negedge rst_f) begin
     if (rst_f == 0)
       present_state <= start1;
     else 
@@ -69,8 +60,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
  
   /* TODO: Generate outputs based on the FSM states and inputs. For Parts 2, 3 and 4 you will
        add the new control signals here. */
-  always @ (present_state,opcode,mm)
-  begin
+  always @ (present_state,opcode,mm) begin
     rf_we = 1'b0;
     alu_op = 2'b10;
     wb_sel = 1'b0;
@@ -81,202 +71,201 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
     dm_we = 1'b0;
     rb_sel = 1'b0;
     swp_sel = 1;
-    case(present_state)
-      fetch: //done
-      begin
+    
+    case (present_state)
+      fetch: begin //done
         ir_load = 1;
-	pc_write = 1;
-	//increment PC in fetch
+	      pc_write = 1;
+	      //increment PC in fetch
         pc_sel = 0;   
-      end
+      end // end fetch
 
-      decode:
-      begin
-	pc_sel = 1'b1;
-	//could be in execute.  Here because nothing else happens here.
-	if(opcode == BRA || opcode == BNE)//absolute
-	   br_sel = 1;
-	if(opcode == BRR || opcode == BNR)
-	   br_sel = 0;
-	if((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
-	   pc_write = 1;
-	if((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
-	   pc_write = 1;
-        
-      end
+      decode: begin
+	      pc_sel = 1'b1;
+	      //could be in execute.  Here because nothing else happens here.
+	      if (opcode == BRA || opcode == BNE)//absolute
+	        br_sel = 1;
+	      if (opcode == BRR || opcode == BNR)
+	        br_sel = 0;
+	      if ((opcode == BRA || opcode == BRR) && ((mm & stat) != 0))
+	        pc_write = 1;
+	      if ((opcode == BNE || opcode == BNR) && ((mm & stat) == 0))
+	        pc_write = 1;
+      end // end decode
 
       start1:
-	pc_rst = 1;
+        pc_rst = 1;
 
-      execute:
-      begin
+      execute: begin
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
         if(opcode == 8 && mm == 8)
           alu_op[0] = 1'b1;
+        
         //if oppcode is 8 then alu_op bit 1 is zero
         if(opcode == 8)
           alu_op[1] = 1'b0;
-	// Calculates the rs + imm
-	if((opcode == LOD || opcode == STR) && mm == 8)
-        begin
+	      
+        // Calculates the rs + imm
+	      if((opcode == LOD || opcode == STR) && mm == 8) begin
           alu_op[0] =  1'b1;
-	  alu_op[1] =  1'b0;
+	        alu_op[1] =  1'b0;
         end
-	if((opcode == LOD || opcode == STR) && mm == 9)
-        begin
+	      
+        if((opcode == LOD || opcode == STR) && mm == 9) begin
           alu_op[0] =  1'b1;
-	  alu_op[1] =  1'b0;
+	        alu_op[1] =  1'b0;
         end
-	if((opcode == LOD || opcode == STR) && mm == 1)
-        begin
+	      
+        if((opcode == LOD || opcode == STR) && mm == 1) begin
           alu_op[0] =  1'b1;
-	  alu_op[1] =  1'b0;
+          alu_op[1] =  1'b0;
         end
- 	if((opcode == LOD || opcode == STR) && mm ==0)
-	begin
-	  alu_op[0] =  1'b0;
-	  alu_op[1] =  1'b0;
+
+ 	      if((opcode == LOD || opcode == STR) && mm ==0) begin
+	        alu_op[0] =  1'b0;
+	        alu_op[1] =  1'b0;
         end
-      end
+      end // end execute
 		
-      mem://make sure output of alu immedeate or not so at the beginning of writeback
-      begin
-
-
-	if((opcode == LOD || opcode == STR) && mm == 8)
-        begin
+      mem: begin//make sure output of alu immedeate or not so at the beginning of writeback
+	      if ((opcode == LOD || opcode == STR) && mm == 8) begin
           alu_op[0] =  1'b1;
-	  alu_op[1] =  1'b0;
+	        alu_op[1] =  1'b0;
         end
-	if((opcode == LOD || opcode == STR) && mm == 9)
-        begin
+	
+        if ((opcode == LOD || opcode == STR) && mm == 9) begin
           alu_op[0] =  1'b1;
-	  alu_op[1] =  1'b0;
+	        alu_op[1] =  1'b0;
         end
-	if((opcode == LOD || opcode == STR) && mm == 1)
-        begin
+	
+        if ((opcode == LOD || opcode == STR) && mm == 1) begin
           alu_op[0] =  1'b1;
-	  alu_op[1] =  1'b0;
+	        alu_op[1] =  1'b0;
         end
- 	if((opcode == LOD || opcode == STR) && mm ==0)
-	begin
-	  alu_op[0] =  1'b0;
-	  alu_op[1] =  1'b0;
+ 	
+        if ((opcode == LOD || opcode == STR) && mm ==0) begin
+	        alu_op[0] =  1'b0;
+	        alu_op[1] =  1'b0;
         end
-
-
 
         //if opcode is 8 and mm is 8 alu_op bit zero is 1
-        if(opcode == 8 && mm == 8)
+        if (opcode == 8 && mm == 8)
           alu_op[0] = 1'b1;
-	if (opcode == STR && (mm == 8 || mm == 0)) begin
+
+	      if (opcode == STR && (mm == 8 || mm == 0)) begin
           //wb_sel[1] = 1;
           //wb_sel[0] = 0;
           if (mm == 8) begin
             mm_sel = 2'b00;
-	  end
+	        end
+
           if (mm == 0) begin
             mm_sel = 2'b01;
-	  end
+	        end
+    
           rb_sel = 1;
           dm_we = 1;
         end
-	if(opcode == STR && (mm == 9 || mm == 1)) begin
-	  if(mm == 9)begin // STP
-	     mm_sel = 2'b00;
-	  end
-	  if(mm == 1)begin // STR
-	    mm_sel = 2'b10;
-	  end
+	
+        if (opcode == STR && (mm == 9 || mm == 1)) begin
+	        
+          if(mm == 9) begin // STP
+            mm_sel = 2'b00;
+	        end
 
-	  rb_sel = 1;
-	  dm_we = 1;
-	end
-	if (opcode == LOD && (mm == 8 || mm == 0)) begin 
+	        if (mm == 1) begin // STR
+	          mm_sel = 2'b10;
+	        end
+
+	        rb_sel = 1;
+	        dm_we = 1;
+	      end
+
+	      if (opcode == LOD && (mm == 8 || mm == 0)) begin 
           wb_sel[0] = 1;
-	  wb_sel[1] = 0;
+	        wb_sel[1] = 0;
+    
           if (mm == 8)
             mm_sel = 2'b00;
           if (mm == 0)
             mm_sel = 2'b01;
+    
           rb_sel = 1;
           rf_we = 1;
         end
-	if (opcode == LOD && (mm == 9 || mm == 1)) begin 
+
+	      if (opcode == LOD && (mm == 9 || mm == 1)) begin 
           wb_sel[0] = 1;
-	  wb_sel[1] = 0;
+	        wb_sel[1] = 0;
+    
           if (mm == 9)
             mm_sel = 2'b00;
           if (mm == 1)
             mm_sel = 2'b10;
+
           rb_sel = 1;
           rf_we = 1;
         end
-	if( opcode == SWP) begin
-		
-		rb_sel = 1;
-		swp_sel = 1;
-		rf_we = 1;
-		wb_sel = 2'b10;
-		
-	end
-      end
 
-      writeback:
-      begin
+	      if (opcode == SWP) begin
+	        rb_sel = 1;
+		      swp_sel = 1;
+		      rf_we = 1;
+		      wb_sel = 2'b10;
+	      end
+
+      end // end mem
+
+      writeback: begin
         //write back to the register file
-        
-        if(opcode == 8)
+        if (opcode == 8)
           rf_we = 1;
-      
+	      
+        //wher rfwe is set to 1 if opcode is 8
+        if (opcode == SWP) begin
+      		rb_sel = 1;
+		      swp_sel = 0;
+		      rf_we = 1;
+		      wb_sel = 2'b11;
+	      end
+	      
+        if (opcode == STR && (mm == 9 || mm == 1)) begin
+	        if(mm == 9) begin // STP
+	          swp_sel = 0;
+	          rf_we = 1;
+	          wb_sel = 2'b00;
+	        end
+	      
+          if (mm == 1) begin // STR
+	          swp_sel = 0;
+	          rf_we = 1;
+	          wb_sel = 2'b00;
+	        end	 
+	      end
 
-	//wher rfwe is set to 1 if opcode is 8
-
-	if(opcode == SWP) begin
-		
-		rb_sel = 1;
-		swp_sel = 0;
-		rf_we = 1;
-		wb_sel = 2'b11;
-	end
-	if(opcode == STR && (mm == 9 || mm == 1)) begin
-	  if(mm == 9)begin // STP
-	     swp_sel = 0;
-	     rf_we = 1;
-	     wb_sel = 2'b00;
-	  end
-	  if(mm == 1)begin // STR
-	     swp_sel = 0;
-	     rf_we = 1;
-	     wb_sel = 2'b00;
-	  end	 
-	end
-	if (opcode == LOD && (mm == 9 || mm == 1)) begin 
-          
-          if (mm == 9)begin
+	      if (opcode == LOD && (mm == 9 || mm == 1)) begin 
+          if (mm == 9) begin
             swp_sel = 0;
-	     rf_we = 1;
-	     wb_sel = 2'b00;
-	  end
-          if (mm == 1)begin
-	     swp_sel = 0;
-	     rf_we = 1;
-	     wb_sel = 2'b00;
-
-	  end
-         
+            rf_we = 1;
+	          wb_sel = 2'b00;
+	        end
+          
+          if (mm == 1) begin
+	          swp_sel = 0;
+	          rf_we = 1;
+	          wb_sel = 2'b00;
+	        end
         end
+      end // end writeback
 
-       end
     endcase
+
   end
 
   // Halt on HLT instruction
   
-  always @ (opcode)
-  begin
-    if (opcode == HLT)
-    begin 
+  always @ (opcode) begin
+    if (opcode == HLT) begin 
       #5 $display ("Halt."); //Delay 5 ns so $monitor will print the halt instruction
       $stop;
     end

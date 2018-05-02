@@ -66,30 +66,25 @@
 18330010 //24:     LDX  R3,R3,16     R3 <- M(R3+0010)                    R3 = 00000006
 //30140000 // this is the swap instruction it switches r1 for r4
 
-// At this point, registers should be as follows:
-// EXCEPT THAT I SWAPPED THE R1 AN R4 SO THOSE ARE BASSACKWARDS
-//   R1: 00000001		R4: 00000006
-//   R2: FF000019		R5: FF000019
-//   R3: 00000006		R0, R6-R15: 00000000
-//   M[8]: 00000006		M[9]: FF000019
+// Below are our tests for each load and store operation:
 
+// STP 
+// expected result: r1 = 00000009 dm9= 00000006
+//29410008
 
-//29410008    // STP
-// r1 = 00000009 dm9= 00000006
-
+// STR 
 //20100001 // store 1 at the memory location of 1
-//21410007        // STR
+//21410007
 
-// LDP
-//19230003      // LDP R2,R3,#0003 R2 <- M(R3+0003); R2 <- M[9]  
-// r2 = ff000019 r3 = 00000009
+// LDP R2,R3,#0003 R2 <- M(R3+0003); R2 <- M[9]
+// expected result: r2 = ff000019 r3 = 00000009
+//19230003      
 
 
 // LDR 
-//
+// expected result: r2 = 00000001 r1 = 00000004
 //20100001 // store 1 at the memory location of 1
-//11210003         
-// r2 = 00000001 r1 = 00000004
+//11210003
 
 F0000000 //25:     HLT                                                   Halt program
 
