@@ -9,7 +9,7 @@ z2
 cModel Technology
 dc:/program files/Modeltech_pe_edu_10.4a/examples
 valu
-Z0 !s110 1525278169
+Z0 !s110 1525283085
 !i10b 1
 !s100 W0L>RIQWAR4jllG6FV6gf1
 IkhcIZ3DK5@Bci0>FdL6DP0
@@ -23,7 +23,7 @@ Z4 OP;L;10.4a;61
 r1
 !s85 0
 31
-Z5 !s108 1525278169.000000
+Z5 !s108 1525283085.000000
 Z6 !s107 C:/Git/School/CompArch/ProjectCAO/statreg.v|C:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v|C:/Git/School/CompArch/ProjectCAO/SISC.v|C:/Git/School/CompArch/ProjectCAO/rf.v|C:/Git/School/CompArch/ProjectCAO/pc.v|C:/Git/School/CompArch/ProjectCAO/mux32.v|C:/Git/School/CompArch/ProjectCAO/mux16.v|C:/Git/School/CompArch/ProjectCAO/mux4.v|C:/Git/School/CompArch/ProjectCAO/ir.v|C:/Git/School/CompArch/ProjectCAO/im.v|C:/Git/School/CompArch/ProjectCAO/dm.v|C:/Git/School/CompArch/ProjectCAO/ctrl.v|C:/Git/School/CompArch/ProjectCAO/br.v|C:/Git/School/CompArch/ProjectCAO/alu.v|
 Z7 !s90 -reportprogress|300|-work|work|C:/Git/School/CompArch/ProjectCAO/alu.v|C:/Git/School/CompArch/ProjectCAO/br.v|C:/Git/School/CompArch/ProjectCAO/ctrl.v|C:/Git/School/CompArch/ProjectCAO/dm.v|C:/Git/School/CompArch/ProjectCAO/im.v|C:/Git/School/CompArch/ProjectCAO/ir.v|C:/Git/School/CompArch/ProjectCAO/mux4.v|C:/Git/School/CompArch/ProjectCAO/mux16.v|C:/Git/School/CompArch/ProjectCAO/mux32.v|C:/Git/School/CompArch/ProjectCAO/pc.v|C:/Git/School/CompArch/ProjectCAO/rf.v|C:/Git/School/CompArch/ProjectCAO/SISC.v|C:/Git/School/CompArch/ProjectCAO/sisc_tb_p3.v|C:/Git/School/CompArch/ProjectCAO/statreg.v|
 !s101 -O0
@@ -53,11 +53,11 @@ R8
 vctrl
 R0
 !i10b 1
-!s100 BG69Z@f^6:?IXgIHj2]ZP3
-I2CObEFH>T1d]`W]FT1eUZ2
+!s100 ?nd1fG2J?[YVaUK^]AHIS0
+I5@oTQLIz;eloe1Y4?3m<>2
 R1
 R2
-w1525277769
+w1525282867
 8C:/Git/School/CompArch/ProjectCAO/ctrl.v
 FC:/Git/School/CompArch/ProjectCAO/ctrl.v
 L0 6
@@ -242,11 +242,11 @@ R8
 vsisc
 R0
 !i10b 1
-!s100 >5c9bGLi@XNAMW9Qo]BOG1
-I?hYkd?m^OzRcP^iznHbJK2
+!s100 P8zIa[zc7<ZADk@@^2nU50
+Ia_=UkeYGFDH;2mb=c382_0
 R1
 R2
-w1525103272
+w1525282911
 8C:/Git/School/CompArch/ProjectCAO/SISC.v
 FC:/Git/School/CompArch/ProjectCAO/SISC.v
 L0 6

@@ -231,6 +231,7 @@ module ctrl (clk, rst_f, opcode, mm, stat, rf_we, alu_op, wb_sel, br_sel, pc_rst
       
 
 	//wher rfwe is set to 1 if opcode is 8
+
 	if(opcode == SWP) begin
 		
 		rb_sel = 1;
